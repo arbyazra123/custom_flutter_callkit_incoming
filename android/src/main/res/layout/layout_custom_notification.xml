@@ -53,7 +53,7 @@
         <LinearLayout
             android:id="@+id/llDecline"
             android:layout_width="0dp"
-            android:layout_height="@dimen/base_margin_x4_8"
+            android:layout_height="@dimen/base_margin_x3_5"
             android:layout_weight="1"
             android:background="@drawable/rounded_button_decline"
             android:clickable="true"
@@ -92,7 +92,7 @@
         <LinearLayout
             android:id="@+id/llAccept"
             android:layout_width="0dp"
-            android:layout_height="@dimen/base_margin_x4_8"
+            android:layout_height="@dimen/base_margin_x3_5"
             android:layout_weight="1"
             android:background="@drawable/rounded_button_accept"
             android:clickable="true"

@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_core/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-ml/values-ml.xml",
+            "map": [
+                {
+                    "source": "/Users/def/.gradle/caches/transforms-3/4123bacc4e6fd49d03693b0cdacc6f80/transformed/core-1.6.0/res/values-ml/values-ml.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "215",
+                        "endColumns": "100",
+                        "endOffsets": "311"
+                    }
+                },
+                {
+                    "source": "/Users/def/.gradle/caches/transforms-3/a55bf3847d0943fdc7af22e74df143d3/transformed/jetified-play-services-basement-18.1.0/res/values-ml/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "155",
+                        "endOffsets": "350"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "159",
+                        "endOffsets": "210"
+                    }
+                }
+            ]
+        }
+    ]
+}

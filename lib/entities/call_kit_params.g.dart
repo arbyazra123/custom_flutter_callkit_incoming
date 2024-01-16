@@ -9,6 +9,7 @@ part of 'call_kit_params.dart';
 CallKitParams _$CallKitParamsFromJson(Map<String, dynamic> json) =>
     CallKitParams(
       id: json['id'] as String?,
+      notificationLogo: json['notificationLogo'] as String?,
       nameCaller: json['nameCaller'] as String?,
       appName: json['appName'] as String?,
       avatar: json['avatar'] as String?,
@@ -38,6 +39,7 @@ Map<String, dynamic> _$CallKitParamsToJson(CallKitParams instance) =>
       'nameCaller': instance.nameCaller,
       'appName': instance.appName,
       'avatar': instance.avatar,
+      'notificationLogo': instance.notificationLogo,
       'handle': instance.handle,
       'type': instance.type,
       'normalHandle': instance.normalHandle,

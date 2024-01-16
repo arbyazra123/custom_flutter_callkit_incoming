@@ -11,6 +11,7 @@ part 'call_kit_params.g.dart';
 class CallKitParams {
   const CallKitParams({
     this.id,
+    this.notificationLogo,
     this.nameCaller,
     this.appName,
     this.avatar,
@@ -31,6 +32,7 @@ class CallKitParams {
   final String? nameCaller;
   final String? appName;
   final String? avatar;
+  final String? notificationLogo;
   final String? handle;
   final int? type;
   final int? normalHandle;

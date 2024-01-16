@@ -17,6 +17,8 @@ data class Data(val args: Map<String, Any?>) {
     var nameCaller: String = (args["nameCaller"] as? String) ?: ""
     @JsonProperty("appName")
     var appName: String = (args["appName"] as? String) ?: ""
+    @JsonProperty("notificationLogo")
+    var notificationLogo: String = (args["notificationLogo"] as? String) ?: ""
     @JsonProperty("handle")
     var handle: String = (args["handle"] as? String) ?: ""
     @JsonProperty("avatar")
@@ -131,6 +133,7 @@ data class Data(val args: Map<String, Any?>) {
         bundle.putString(CallkitConstants.EXTRA_CALLKIT_ID, id)
         bundle.putString(CallkitConstants.EXTRA_CALLKIT_NAME_CALLER, nameCaller)
         bundle.putString(CallkitConstants.EXTRA_CALLKIT_HANDLE, handle)
+        bundle.putString(CallkitConstants.EXTRA_CALLKIT_NOTIFICATION_LOGO, notificationLogo)
         bundle.putString(CallkitConstants.EXTRA_CALLKIT_AVATAR, avatar)
         bundle.putInt(CallkitConstants.EXTRA_CALLKIT_TYPE, type)
         bundle.putLong(CallkitConstants.EXTRA_CALLKIT_DURATION, duration)
@@ -213,6 +216,8 @@ data class Data(val args: Map<String, Any?>) {
                 bundle.getString(CallkitConstants.EXTRA_CALLKIT_APP_NAME, "")
             data.handle =
                 bundle.getString(CallkitConstants.EXTRA_CALLKIT_HANDLE, "")
+            data.notificationLogo =
+                bundle.getString(CallkitConstants.EXTRA_CALLKIT_NOTIFICATION_LOGO, "")
             data.avatar =
                 bundle.getString(CallkitConstants.EXTRA_CALLKIT_AVATAR, "")
             data.type = bundle.getInt(CallkitConstants.EXTRA_CALLKIT_TYPE, 0)

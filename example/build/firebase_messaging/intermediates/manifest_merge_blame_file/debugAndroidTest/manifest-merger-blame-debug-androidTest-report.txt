@@ -1,0 +1,284 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="io.flutter.plugins.firebase.messaging.test" >
+4
+5    <uses-sdk
+5-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14573342981954678874.xml:5:5-74
+6        android:minSdkVersion="19"
+6-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14573342981954678874.xml:5:15-41
+7        android:targetSdkVersion="19" />
+7-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14573342981954678874.xml:5:42-71
+8
+9    <instrumentation
+9-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14573342981954678874.xml:11:5-15:92
+10        android:name="androidx.test.runner.AndroidJUnitRunner"
+10-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14573342981954678874.xml:11:22-76
+11        android:functionalTest="false"
+11-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14573342981954678874.xml:14:22-52
+12        android:handleProfiling="false"
+12-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14573342981954678874.xml:13:22-53
+13        android:label="Tests for io.flutter.plugins.firebase.messaging.test"
+13-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14573342981954678874.xml:15:22-90
+14        android:targetPackage="io.flutter.plugins.firebase.messaging.test" />
+14-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14573342981954678874.xml:12:22-88
+15
+16    <uses-permission android:name="android.permission.INTERNET" />
+16-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-67
+16-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-64
+17    <uses-permission android:name="android.permission.WAKE_LOCK" />
+17-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-68
+17-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:10:22-65
+18    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Permissions options for the `notification` group -->
+18-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:11:5-79
+18-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:11:22-76
+19    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+19-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:13:5-77
+19-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:13:22-74
+20    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+20-->[com.google.firebase:firebase-iid:21.1.0] /Users/def/.gradle/caches/transforms-3/723db08d6a65aee253c326956992f285/transformed/jetified-firebase-iid-21.1.0/AndroidManifest.xml:26:5-82
+20-->[com.google.firebase:firebase-iid:21.1.0] /Users/def/.gradle/caches/transforms-3/723db08d6a65aee253c326956992f285/transformed/jetified-firebase-iid-21.1.0/AndroidManifest.xml:26:22-79
+21
+22    <application
+22-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14573342981954678874.xml:7:5-9:19
+23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+23-->[androidx.core:core:1.6.0] /Users/def/.gradle/caches/transforms-3/4123bacc4e6fd49d03693b0cdacc6f80/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+24        android:debuggable="true" >
+25        <uses-library android:name="android.test.runner" />
+25-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14573342981954678874.xml:8:9-60
+25-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14573342981954678874.xml:8:23-57
+26
+27        <service
+27-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:16:9-19:72
+28            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService"
+28-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-107
+29            android:exported="false"
+29-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-37
+30            android:permission="android.permission.BIND_JOB_SERVICE" />
+30-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-69
+31        <service
+31-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:20:9-26:19
+32            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService"
+32-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-97
+33            android:exported="false" >
+33-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-37
+34            <intent-filter>
+34-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-25:29
+35                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+35-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:24:17-78
+35-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:24:25-75
+36            </intent-filter>
+37        </service>
+38
+39        <receiver
+39-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:28:9-35:20
+40            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver"
+40-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-98
+41            android:exported="true"
+41-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:30:13-36
+42            android:permission="com.google.android.c2dm.permission.SEND" >
+42-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:31:13-73
+43            <intent-filter>
+43-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:32:13-34:29
+44                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+44-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:33:17-81
+44-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:33:25-78
+45            </intent-filter>
+46        </receiver>
+47
+48        <service
+48-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:37:9-41:19
+49            android:name="com.google.firebase.components.ComponentDiscoveryService"
+49-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:37:18-89
+50            android:directBootAware="true"
+50-->[com.google.firebase:firebase-common:20.4.2] /Users/def/.gradle/caches/transforms-3/89300710bce6ed54aa7fb6cca09e87d4/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:32:13-43
+51            android:exported="false" >
+51-->[com.google.firebase:firebase-iid:21.1.0] /Users/def/.gradle/caches/transforms-3/723db08d6a65aee253c326956992f285/transformed/jetified-firebase-iid-21.1.0/AndroidManifest.xml:31:13-37
+52            <meta-data
+52-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:38:13-40:85
+53                android:name="com.google.firebase.components:io.flutter.plugins.firebase.messaging.FlutterFirebaseAppRegistrar"
+53-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:39:17-128
+54                android:value="com.google.firebase.components.ComponentRegistrar" />
+54-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:40:17-82
+55            <meta-data
+55-->[:firebase_core] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
+56                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+56-->[:firebase_core] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-124
+57                android:value="com.google.firebase.components.ComponentRegistrar" />
+57-->[:firebase_core] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
+58            <meta-data
+58-->[com.google.firebase:firebase-iid:21.1.0] /Users/def/.gradle/caches/transforms-3/723db08d6a65aee253c326956992f285/transformed/jetified-firebase-iid-21.1.0/AndroidManifest.xml:32:13-34:85
+59                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+59-->[com.google.firebase:firebase-iid:21.1.0] /Users/def/.gradle/caches/transforms-3/723db08d6a65aee253c326956992f285/transformed/jetified-firebase-iid-21.1.0/AndroidManifest.xml:33:17-96
+60                android:value="com.google.firebase.components.ComponentRegistrar" />
+60-->[com.google.firebase:firebase-iid:21.1.0] /Users/def/.gradle/caches/transforms-3/723db08d6a65aee253c326956992f285/transformed/jetified-firebase-iid-21.1.0/AndroidManifest.xml:34:17-82
+61            <meta-data
+61-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:57:13-59:85
+62                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+62-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:58:17-122
+63                android:value="com.google.firebase.components.ComponentRegistrar" />
+63-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:59:17-82
+64            <meta-data
+64-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:60:13-62:85
+65                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+65-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:61:17-119
+66                android:value="com.google.firebase.components.ComponentRegistrar" />
+66-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:62:17-82
+67            <meta-data
+67-->[com.google.firebase:firebase-installations:17.2.0] /Users/def/.gradle/caches/transforms-3/7cc225b261da50ff31895ede86712348/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:15:13-17:85
+68                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+68-->[com.google.firebase:firebase-installations:17.2.0] /Users/def/.gradle/caches/transforms-3/7cc225b261da50ff31895ede86712348/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:16:17-130
+69                android:value="com.google.firebase.components.ComponentRegistrar" />
+69-->[com.google.firebase:firebase-installations:17.2.0] /Users/def/.gradle/caches/transforms-3/7cc225b261da50ff31895ede86712348/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:17:17-82
+70            <meta-data
+70-->[com.google.firebase:firebase-installations:17.2.0] /Users/def/.gradle/caches/transforms-3/7cc225b261da50ff31895ede86712348/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:18:13-20:85
+71                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+71-->[com.google.firebase:firebase-installations:17.2.0] /Users/def/.gradle/caches/transforms-3/7cc225b261da50ff31895ede86712348/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:19:17-127
+72                android:value="com.google.firebase.components.ComponentRegistrar" />
+72-->[com.google.firebase:firebase-installations:17.2.0] /Users/def/.gradle/caches/transforms-3/7cc225b261da50ff31895ede86712348/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:20:17-82
+73            <meta-data
+73-->[com.google.firebase:firebase-common-ktx:20.4.2] /Users/def/.gradle/caches/transforms-3/5e838625788d639ded328d67c4b5b8d7/transformed/jetified-firebase-common-ktx-20.4.2/AndroidManifest.xml:12:13-14:85
+74                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+74-->[com.google.firebase:firebase-common-ktx:20.4.2] /Users/def/.gradle/caches/transforms-3/5e838625788d639ded328d67c4b5b8d7/transformed/jetified-firebase-common-ktx-20.4.2/AndroidManifest.xml:13:17-116
+75                android:value="com.google.firebase.components.ComponentRegistrar" />
+75-->[com.google.firebase:firebase-common-ktx:20.4.2] /Users/def/.gradle/caches/transforms-3/5e838625788d639ded328d67c4b5b8d7/transformed/jetified-firebase-common-ktx-20.4.2/AndroidManifest.xml:14:17-82
+76            <meta-data
+76-->[com.google.firebase:firebase-common:20.4.2] /Users/def/.gradle/caches/transforms-3/89300710bce6ed54aa7fb6cca09e87d4/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:35:13-37:85
+77                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+77-->[com.google.firebase:firebase-common:20.4.2] /Users/def/.gradle/caches/transforms-3/89300710bce6ed54aa7fb6cca09e87d4/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:36:17-109
+78                android:value="com.google.firebase.components.ComponentRegistrar" />
+78-->[com.google.firebase:firebase-common:20.4.2] /Users/def/.gradle/caches/transforms-3/89300710bce6ed54aa7fb6cca09e87d4/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:37:17-82
+79            <meta-data
+79-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/def/.gradle/caches/transforms-3/6a5d9a3d4df564407ce508af1958188e/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
+80                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+80-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/def/.gradle/caches/transforms-3/6a5d9a3d4df564407ce508af1958188e/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:28:17-115
+81                android:value="com.google.firebase.components.ComponentRegistrar" />
+81-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/def/.gradle/caches/transforms-3/6a5d9a3d4df564407ce508af1958188e/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:29:17-82
+82        </service>
+83
+84        <provider
+84-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:43:9-47:38
+85            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
+85-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:44:13-102
+86            android:authorities="io.flutter.plugins.firebase.messaging.test.flutterfirebasemessaginginitprovider"
+86-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:45:13-88
+87            android:exported="false"
+87-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:46:13-37
+88            android:initOrder="99" />
+88-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:47:13-35
+89
+90        <receiver
+90-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:29:9-40:20
+91            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+91-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:30:13-78
+92            android:exported="true"
+92-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:31:13-36
+93            android:permission="com.google.android.c2dm.permission.SEND" >
+93-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:32:13-73
+94            <intent-filter>
+94-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:32:13-34:29
+95                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+95-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:33:17-81
+95-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:33:25-78
+96            </intent-filter>
+97
+98            <meta-data
+98-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:37:13-39:40
+99                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+99-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:38:17-92
+100                android:value="true" />
+100-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:39:17-37
+101        </receiver>
+102        <!--
+103             FirebaseMessagingService performs security checks at runtime,
+104             but set to not exported to explicitly avoid allowing another app to call it.
+105        -->
+106        <service
+106-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:46:9-53:19
+107            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+107-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:47:13-82
+108            android:directBootAware="true"
+108-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:48:13-43
+109            android:exported="false" >
+109-->[com.google.firebase:firebase-messaging:23.3.1] /Users/def/.gradle/caches/transforms-3/8a2032b2c7000c1b1fd060783051b1dd/transformed/jetified-firebase-messaging-23.3.1/AndroidManifest.xml:49:13-37
+110            <intent-filter android:priority="-500" >
+110-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-25:29
+111                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+111-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:24:17-78
+111-->[:firebase_messaging] /Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/example/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:24:25-75
+112            </intent-filter>
+113        </service>
+114
+115        <provider
+115-->[com.google.firebase:firebase-common:20.4.2] /Users/def/.gradle/caches/transforms-3/89300710bce6ed54aa7fb6cca09e87d4/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:23:9-28:39
+116            android:name="com.google.firebase.provider.FirebaseInitProvider"
+116-->[com.google.firebase:firebase-common:20.4.2] /Users/def/.gradle/caches/transforms-3/89300710bce6ed54aa7fb6cca09e87d4/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:24:13-77
+117            android:authorities="io.flutter.plugins.firebase.messaging.test.firebaseinitprovider"
+117-->[com.google.firebase:firebase-common:20.4.2] /Users/def/.gradle/caches/transforms-3/89300710bce6ed54aa7fb6cca09e87d4/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:25:13-72
+118            android:directBootAware="true"
+118-->[com.google.firebase:firebase-common:20.4.2] /Users/def/.gradle/caches/transforms-3/89300710bce6ed54aa7fb6cca09e87d4/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:26:13-43
+119            android:exported="false"
+119-->[com.google.firebase:firebase-common:20.4.2] /Users/def/.gradle/caches/transforms-3/89300710bce6ed54aa7fb6cca09e87d4/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:27:13-37
+120            android:initOrder="100" />
+120-->[com.google.firebase:firebase-common:20.4.2] /Users/def/.gradle/caches/transforms-3/89300710bce6ed54aa7fb6cca09e87d4/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:28:13-36
+121
+122        <activity
+122-->[com.google.android.gms:play-services-base:18.0.1] /Users/def/.gradle/caches/transforms-3/a4f28c6f632bbfd0875e22c8350c8508/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+123            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+123-->[com.google.android.gms:play-services-base:18.0.1] /Users/def/.gradle/caches/transforms-3/a4f28c6f632bbfd0875e22c8350c8508/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+124            android:exported="false"
+124-->[com.google.android.gms:play-services-base:18.0.1] /Users/def/.gradle/caches/transforms-3/a4f28c6f632bbfd0875e22c8350c8508/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+125            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+125-->[com.google.android.gms:play-services-base:18.0.1] /Users/def/.gradle/caches/transforms-3/a4f28c6f632bbfd0875e22c8350c8508/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+126
+127        <uses-library
+127-->[androidx.window:window:1.0.0-beta04] /Users/def/.gradle/caches/transforms-3/de0219771302feba7cab9dd5f9212f50/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+128            android:name="androidx.window.extensions"
+128-->[androidx.window:window:1.0.0-beta04] /Users/def/.gradle/caches/transforms-3/de0219771302feba7cab9dd5f9212f50/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+129            android:required="false" />
+129-->[androidx.window:window:1.0.0-beta04] /Users/def/.gradle/caches/transforms-3/de0219771302feba7cab9dd5f9212f50/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+130        <uses-library
+130-->[androidx.window:window:1.0.0-beta04] /Users/def/.gradle/caches/transforms-3/de0219771302feba7cab9dd5f9212f50/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+131            android:name="androidx.window.sidecar"
+131-->[androidx.window:window:1.0.0-beta04] /Users/def/.gradle/caches/transforms-3/de0219771302feba7cab9dd5f9212f50/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+132            android:required="false" />
+132-->[androidx.window:window:1.0.0-beta04] /Users/def/.gradle/caches/transforms-3/de0219771302feba7cab9dd5f9212f50/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+133
+134        <meta-data
+134-->[com.google.android.gms:play-services-basement:18.1.0] /Users/def/.gradle/caches/transforms-3/a55bf3847d0943fdc7af22e74df143d3/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+135            android:name="com.google.android.gms.version"
+135-->[com.google.android.gms:play-services-basement:18.1.0] /Users/def/.gradle/caches/transforms-3/a55bf3847d0943fdc7af22e74df143d3/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+136            android:value="@integer/google_play_services_version" />
+136-->[com.google.android.gms:play-services-basement:18.1.0] /Users/def/.gradle/caches/transforms-3/a55bf3847d0943fdc7af22e74df143d3/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+137
+138        <service
+138-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/def/.gradle/caches/transforms-3/87e7a037ec15876580669e7d01582eb2/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
+139            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+139-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/def/.gradle/caches/transforms-3/87e7a037ec15876580669e7d01582eb2/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
+140            android:exported="false" >
+140-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/def/.gradle/caches/transforms-3/87e7a037ec15876580669e7d01582eb2/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
+141            <meta-data
+141-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/def/.gradle/caches/transforms-3/87e7a037ec15876580669e7d01582eb2/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
+142                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+142-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/def/.gradle/caches/transforms-3/87e7a037ec15876580669e7d01582eb2/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
+143                android:value="cct" />
+143-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/def/.gradle/caches/transforms-3/87e7a037ec15876580669e7d01582eb2/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
+144        </service>
+145        <service
+145-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/def/.gradle/caches/transforms-3/f28a7a2413498b37b31eb28d58a02153/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
+146            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+146-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/def/.gradle/caches/transforms-3/f28a7a2413498b37b31eb28d58a02153/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
+147            android:exported="false"
+147-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/def/.gradle/caches/transforms-3/f28a7a2413498b37b31eb28d58a02153/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
+148            android:permission="android.permission.BIND_JOB_SERVICE" >
+148-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/def/.gradle/caches/transforms-3/f28a7a2413498b37b31eb28d58a02153/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
+149        </service>
+150
+151        <receiver
+151-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/def/.gradle/caches/transforms-3/f28a7a2413498b37b31eb28d58a02153/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
+152            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+152-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/def/.gradle/caches/transforms-3/f28a7a2413498b37b31eb28d58a02153/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
+153            android:exported="false" />
+153-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/def/.gradle/caches/transforms-3/f28a7a2413498b37b31eb28d58a02153/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
+154    </application>
+155
+156</manifest>

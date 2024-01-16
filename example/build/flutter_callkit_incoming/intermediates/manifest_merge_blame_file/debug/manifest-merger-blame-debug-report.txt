@@ -1,0 +1,130 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.hiennv.flutter_callkit_incoming" >
+4
+5    <uses-sdk
+6        android:minSdkVersion="16"
+6-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml
+7        android:targetSdkVersion="34" />
+7-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml
+8
+9    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+9-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:4:5-80
+9-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:4:22-78
+10    <uses-permission android:name="android.permission.INTERNET" />
+10-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:5:5-67
+10-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:5:22-64
+11    <uses-permission android:name="android.permission.VIBRATE" />
+11-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:6:5-66
+11-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:6:22-63
+12    <uses-permission android:name="android.permission.WAKE_LOCK" />
+12-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:7:5-68
+12-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:7:22-65
+13    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+13-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:8:5-85
+13-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:8:22-82
+14    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+14-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:9:5-76
+14-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:9:22-74
+15    <uses-permission android:name="android.permission.MANAGE_OWN_CALLS" />
+15-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:10:5-74
+15-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:10:22-72
+16
+17    <application>
+17-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:12:5-62:19
+18        <activity
+18-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:14:9-28:20
+19            android:name="com.hiennv.flutter_callkit_incoming.CallkitIncomingActivity"
+19-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:15:13-87
+20            android:configChanges="orientation"
+20-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:21:13-48
+21            android:excludeFromRecents="true"
+21-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:17:13-46
+22            android:exported="true"
+22-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:22:13-36
+23            android:noHistory="true"
+23-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:18:13-37
+24            android:showOnLockScreen="true"
+24-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:19:13-44
+25            android:taskAffinity="com.hiennv.flutter_callkit_incoming.INCOMING_CALL_AFFINITY"
+25-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:16:13-94
+26            android:theme="@style/CallkitIncomingTheme"
+26-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:23:13-56
+27            android:turnScreenOn="true" >
+27-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:20:13-40
+28            <intent-filter>
+28-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:24:13-27:29
+29                <action android:name="${applicationId}.com.hiennv.flutter_callkit_incoming.ACTION_CALL_INCOMING" />
+29-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:25:17-116
+29-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:25:25-113
+30
+31                <category android:name="android.intent.category.DEFAULT" />
+31-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:26:17-76
+31-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:26:27-73
+32            </intent-filter>
+33        </activity>
+34        <activity
+34-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:29:9-32:85
+35            android:name="com.hiennv.flutter_callkit_incoming.TransparentActivity"
+35-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:32:13-83
+36            android:exported="false"
+36-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:30:13-37
+37            android:theme="@style/TranslucentTheme" />
+37-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:31:13-52
+38
+39        <receiver
+39-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:34:9-45:20
+40            android:name="com.hiennv.flutter_callkit_incoming.CallkitIncomingBroadcastReceiver"
+40-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:35:13-96
+41            android:enabled="true"
+41-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:36:13-35
+42            android:exported="true" >
+42-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:37:13-36
+43            <intent-filter>
+43-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:38:13-44:29
+44                <action android:name="${applicationId}.com.hiennv.flutter_callkit_incoming.ACTION_CALL_INCOMING" />
+44-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:25:17-116
+44-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:25:25-113
+45                <action android:name="${applicationId}.com.hiennv.flutter_callkit_incoming.ACTION_CALL_ACCEPT" />
+45-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:40:17-114
+45-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:40:25-111
+46                <action android:name="${applicationId}.com.hiennv.flutter_callkit_incoming.ACTION_CALL_DECLINE" />
+46-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:41:17-115
+46-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:41:25-112
+47                <action android:name="${applicationId}.com.hiennv.flutter_callkit_incoming.ACTION_CALL_ENDED" />
+47-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:42:17-113
+47-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:42:25-110
+48                <action android:name="${applicationId}.com.hiennv.flutter_callkit_incoming.ACTION_CALL_TIMEOUT" />
+48-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:43:17-115
+48-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:43:25-112
+49            </intent-filter>
+50        </receiver>
+51
+52        <service
+52-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:47:9-50:91
+53            android:name="com.hiennv.flutter_callkit_incoming.CallkitSoundPlayerService"
+53-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:50:13-89
+54            android:enabled="true"
+54-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:48:13-35
+55            android:exported="true" />
+55-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:49:13-36
+56        <service
+56-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:52:9-60:19
+57            android:name="com.hiennv.flutter_callkit_incoming.telecom.TelecomConnectionService"
+57-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:55:13-96
+58            android:enabled="true"
+58-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:53:13-35
+59            android:exported="true"
+59-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:54:13-36
+60            android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE" >
+60-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:56:13-84
+61            <intent-filter>
+61-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:57:13-59:29
+62                <action android:name="android.telecom.ConnectionService" />
+62-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:58:17-76
+62-->/Users/def/Development/flutterProjects/telkomsel/plugins/flutter_callkit_incoming-2.0.1+1/android/src/main/AndroidManifest.xml:58:25-73
+63            </intent-filter>
+64        </service>
+65    </application>
+66
+67</manifest>
