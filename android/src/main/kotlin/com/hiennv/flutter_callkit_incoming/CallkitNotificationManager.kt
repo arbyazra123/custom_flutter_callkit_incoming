@@ -27,7 +27,6 @@ import com.hiennv.flutter_callkit_incoming.widgets.CircleTransform
 import com.squareup.picasso.OkHttp3Downloader
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
-import io.flutter.Log
 import okhttp3.OkHttpClient
 
 
@@ -202,7 +201,7 @@ class CallkitNotificationManager(private val context: Context) {
                 R.drawable.ic_accept,
                 if (TextUtils.isEmpty(textDecline)) context.getString(R.string.text_accept) else textAccept,
                 getAcceptPendingIntent(notificationId, data)
-            ).build()
+            ).setShowsUserInterface(true).build()
             notificationBuilder.addAction(acceptAction)
         }
         val notification = notificationBuilder.build()
@@ -469,12 +468,17 @@ class CallkitNotificationManager(private val context: Context) {
     }
 
     private fun getAcceptPendingIntent(id: Int, data: Bundle): PendingIntent {
-        val intentTransparent = TransparentActivity.getIntent(
-            context,
-            CallkitConstants.ACTION_CALL_ACCEPT,
-            data
-        )
-        return PendingIntent.getActivity(context, id, intentTransparent, getFlagPendingIntent())
+//        val intentTransparent = TransparentActivity.getIntent(
+//            context,
+//            CallkitConstants.ACTION_CALL_ACCEPT,
+//            data
+//        )
+//        val intent = getLaunchIntent(context)?.apply {
+//            action = CallkitConstants.ACTION_CALL_ACCEPT
+//            putExtra("data", data)
+//        }
+        val acceptIntent = CallkitIncomingBroadcastReceiver.getIntentAccept(context, data)
+        return PendingIntent.getBroadcast(context, id, acceptIntent, getFlagPendingIntent())
     }
 
     private fun getDeclinePendingIntent(id: Int, data: Bundle): PendingIntent {
@@ -497,8 +501,22 @@ class CallkitNotificationManager(private val context: Context) {
     }
 
     private fun getActivityPendingIntent(id: Int, data: Bundle): PendingIntent {
-        val intent = CallkitIncomingActivity.getIntent(context, data)
-        return PendingIntent.getActivity(context, id, intent, getFlagPendingIntent())
+        val intent = getLaunchIntent(context)?.apply {
+            action = "${context.packageName}.${CallkitConstants.ACTION_CALL_INCOMING}"
+            putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
+        }
+        return PendingIntent.getActivity(
+            context,
+            id,
+            intent,
+            getFlagPendingIntent()
+        )
+    }
+
+    private fun getLaunchIntent(context: Context): Intent? {
+        val packageName = context.packageName
+        val packageManager = context.packageManager
+        return packageManager.getLaunchIntentForPackage(packageName)
     }
 
     private fun getAppPendingIntent(id: Int, data: Bundle): PendingIntent {
