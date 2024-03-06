@@ -38,7 +38,7 @@ class CallkitNotificationManager(private val context: Context) {
 
         const val EXTRA_TIME_START_CALL = "EXTRA_TIME_START_CALL"
 
-        private const val NOTIFICATION_CHANNEL_ID_INCOMING = "callkit_incoming_channel_id"
+        private const val NOTIFICATION_CHANNEL_ID_INCOMING = "sapa_advanced_call"
         private const val NOTIFICATION_CHANNEL_ID_MISSED = "callkit_missed_channel_id"
     }
 
@@ -152,19 +152,19 @@ class CallkitNotificationManager(private val context: Context) {
                 RemoteViews(context.packageName, R.layout.layout_custom_notification)
             initNotificationViews(notificationViews!!, data)
 
-            if ((Build.MANUFACTURER.equals(
-                    "Samsung",
-                    ignoreCase = true
-                ) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) || isCustomSmallExNotification
-            ) {
-                notificationSmallViews =
-                    RemoteViews(context.packageName, R.layout.layout_custom_small_ex_notification)
-                initNotificationViews(notificationSmallViews!!, data)
-            } else {
+//            if ((Build.MANUFACTURER.equals(
+//                    "Samsung",
+//                    ignoreCase = true
+//                ) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) || isCustomSmallExNotification
+//            ) {
+//                notificationSmallViews =
+//                    RemoteViews(context.packageName, R.layout.layout_custom_small_ex_notification)
+//                initNotificationViews(notificationSmallViews!!, data)
+//            } else {
                 notificationSmallViews =
                     RemoteViews(context.packageName, R.layout.layout_custom_small_notification)
                 initNotificationViews(notificationSmallViews!!, data)
-            }
+//            }
 
             notificationBuilder.setStyle(NotificationCompat.DecoratedCustomViewStyle())
             notificationBuilder.setCustomContentView(notificationSmallViews)
