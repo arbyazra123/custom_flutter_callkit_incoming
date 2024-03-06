@@ -53,7 +53,6 @@ class TelecomConnection internal constructor(private val context: Context, priva
 			}
 		}
 		TelecomUtilities.logToFile("[TelecomConnection] On Answer data: $data")
-
 		context.sendBroadcast(CallkitIncomingBroadcastReceiver.getIntentAccept(context, bundleOf(*data.toList().toTypedArray())))
 
 		TelecomUtilities.logToFile("[TelecomConnection] onAnswer executed")

@@ -17,6 +17,7 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.RemoteViews
 import androidx.appcompat.app.AlertDialog
@@ -171,10 +172,20 @@ class CallkitNotificationManager(private val context: Context) {
             notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
         } else {
             val avatarUrl = data.getString(CallkitConstants.EXTRA_CALLKIT_AVATAR, "")
+            val emptyAvatar = data.getString(CallkitConstants.EXTRA_CALLKIT_EMPTY_AVATAR, "")
+            Log.d("CallIncomingPlugin","emptyAvatar: $emptyAvatar")
             if (avatarUrl != null && avatarUrl.isNotEmpty()) {
                 val headers =
                     data.getSerializable(CallkitConstants.EXTRA_CALLKIT_HEADERS) as HashMap<String, Any?>
                 getPicassoInstance(context, headers).load(avatarUrl)
+                    .into(targetLoadAvatarDefault)
+            } else if (emptyAvatar != null && emptyAvatar.isNotEmpty()) {
+                Log.d("CallIncomingPlugin","Using empty avatar instead")
+                val headers =
+                    data.getSerializable(CallkitConstants.EXTRA_CALLKIT_HEADERS) as HashMap<String, Any?>
+                val emptyUrlAvatar =
+                    String.format("file:///android_asset/flutter_assets/%s", emptyAvatar)
+                getPicassoInstance(context, headers).load(emptyUrlAvatar)
                     .into(targetLoadAvatarDefault)
             }
             notificationBuilder.setContentTitle(
@@ -241,12 +252,23 @@ class CallkitNotificationManager(private val context: Context) {
             if (TextUtils.isEmpty(textAccept)) context.getString(R.string.text_accept) else textAccept
         )
         val avatarUrl = data.getString(CallkitConstants.EXTRA_CALLKIT_AVATAR, "")
+        val emptyAvatar = data.getString(CallkitConstants.EXTRA_CALLKIT_EMPTY_AVATAR, "")
+        Log.d("CallIncomingPlugin","emptyAvatar: $emptyAvatar")
         if (avatarUrl != null && avatarUrl.isNotEmpty()) {
             val headers =
                 data.getSerializable(CallkitConstants.EXTRA_CALLKIT_HEADERS) as HashMap<String, Any?>
             getPicassoInstance(context, headers).load(avatarUrl)
                 .transform(CircleTransform())
                 .into(targetLoadAvatarCustomize)
+        } else if (emptyAvatar != null && emptyAvatar.isNotEmpty()) {
+            Log.d("CallIncomingPlugin","Using empty avatar instead")
+            val headers =
+                data.getSerializable(CallkitConstants.EXTRA_CALLKIT_HEADERS) as HashMap<String, Any?>
+            val emptyUrlAvatar =
+                String.format("file:///android_asset/flutter_assets/%s", emptyAvatar)
+            getPicassoInstance(context, headers).load(emptyUrlAvatar)
+                .transform(CircleTransform())
+                .into(targetLoadAvatarDefault)
         }
     }
 

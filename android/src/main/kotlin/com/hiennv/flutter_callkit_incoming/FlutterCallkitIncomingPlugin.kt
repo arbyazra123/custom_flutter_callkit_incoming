@@ -127,6 +127,9 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
     }
 
     public fun endCall(data: Data) {
+        Handler(Looper.getMainLooper()).post {
+
+        }
         context?.sendBroadcast(
                 CallkitIncomingBroadcastReceiver.getIntentEnded(
                         requireNotNull(context),

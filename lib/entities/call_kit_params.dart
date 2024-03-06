@@ -15,6 +15,7 @@ class CallKitParams {
     this.nameCaller,
     this.appName,
     this.avatar,
+    this.emptyAvatar,
     this.handle,
     this.type,
     this.normalHandle,
@@ -32,6 +33,7 @@ class CallKitParams {
   final String? nameCaller;
   final String? appName;
   final String? avatar;
+  final String? emptyAvatar;
   final String? notificationLogo;
   final String? handle;
   final int? type;
