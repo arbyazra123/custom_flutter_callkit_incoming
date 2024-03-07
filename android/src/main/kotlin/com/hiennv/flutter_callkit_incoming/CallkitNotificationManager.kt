@@ -20,15 +20,23 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.RemoteViews
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.app.Person
+import androidx.core.graphics.drawable.IconCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.FutureTarget
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.hiennv.flutter_callkit_incoming.widgets.CircleTransform
 import com.squareup.picasso.OkHttp3Downloader
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import okhttp3.OkHttpClient
+import java.util.concurrent.ExecutionException
 
 
 class CallkitNotificationManager(private val context: Context) {
@@ -78,7 +86,7 @@ class CallkitNotificationManager(private val context: Context) {
     }
 
 
-    fun showIncomingNotification(data: Bundle) {
+    fun showIncomingNotification(data: Bundle, ic: IconCompat?) {
         data.putLong(EXTRA_TIME_START_CALL, System.currentTimeMillis())
 
         notificationId =
@@ -148,9 +156,6 @@ class CallkitNotificationManager(private val context: Context) {
         val isCustomSmallExNotification =
             data.getBoolean(CallkitConstants.EXTRA_CALLKIT_IS_CUSTOM_SMALL_EX_NOTIFICATION, false)
         if (isCustomNotification) {
-            notificationViews =
-                RemoteViews(context.packageName, R.layout.layout_custom_notification)
-            initNotificationViews(notificationViews!!, data)
 
 //            if ((Build.MANUFACTURER.equals(
 //                    "Samsung",
@@ -161,26 +166,87 @@ class CallkitNotificationManager(private val context: Context) {
 //                    RemoteViews(context.packageName, R.layout.layout_custom_small_ex_notification)
 //                initNotificationViews(notificationSmallViews!!, data)
 //            } else {
-                notificationSmallViews =
-                    RemoteViews(context.packageName, R.layout.layout_custom_small_notification)
-                initNotificationViews(notificationSmallViews!!, data)
+//                notificationSmallViews =
+//                    RemoteViews(context.packageName, R.layout.layout_custom_small_notification)
+//                initNotificationViews(notificationSmallViews!!, data)
 //            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                val caller = Person.Builder()
+//                val avatarUrl = data.getString(CallkitConstants.EXTRA_CALLKIT_AVATAR, "")
+//                val emptyAvatar = data.getString(CallkitConstants.EXTRA_CALLKIT_EMPTY_AVATAR, "")
+//                var futureBitmap: FutureTarget<Bitmap>? = null
+////                val headers =
+////                    data.getSerializable(CallkitConstants.EXTRA_CALLKIT_HEADERS) as HashMap<String, Any?>
+//                if (avatarUrl != null && avatarUrl.isNotEmpty()) {
+//
+//                    futureBitmap =
+//                        Glide.with(context).asBitmap().circleCrop().load(avatarUrl).submit()
+//                } else if (emptyAvatar != null && emptyAvatar.isNotEmpty()) {
+//                    futureBitmap = Glide.with(context).asBitmap().circleCrop().load(
+//                        String.format(
+//                            "file:///android_asset/flutter_assets/%s",
+//                            emptyAvatar
+//                        )
+//                    ).submit()
+//                }
+//                val bitmap =
+//                    try {
+//                        futureBitmap?.get()
+//                    } catch (e: InterruptedException) {
+//                        //set bitmap fallback in case of glide get fail on a 404 response
+//                    } catch (e: ExecutionException) {
+//                        //set bitmap fallback in case of glide get fail on a 404 response
+//                    }
+                if (ic!=null) {
+                    caller.setIcon(ic)
+                }
+                caller.setName(
+                    data.getString(
+                        CallkitConstants.EXTRA_CALLKIT_NAME_CALLER,
+                        ""
+                    )
+                )
+                caller.setImportant(true)
 
-            notificationBuilder.setStyle(NotificationCompat.DecoratedCustomViewStyle())
+                val style = NotificationCompat.CallStyle.forIncomingCall(
+                    caller.build(),
+                    getDeclinePendingIntent(notificationId, data),
+                    getAcceptPendingIntent(notificationId, data)
+                )
+                notificationBuilder.setContentTitle(
+                    data.getString(
+                        CallkitConstants.EXTRA_CALLKIT_NAME_CALLER,
+                        ""
+                    )
+                )
+                notificationBuilder.setContentText(
+                    data.getString(
+                        CallkitConstants.EXTRA_CALLKIT_HANDLE,
+                        ""
+                    )
+                )
+                notificationBuilder.setStyle(style)
+            } else {
+                notificationViews =
+                    RemoteViews(context.packageName, R.layout.layout_custom_notification)
+                initNotificationViews(notificationViews!!, data)
+                notificationBuilder.setStyle(NotificationCompat.BigTextStyle())
+            }
+
 //            notificationBuilder.setCustomContentView(notificationSmallViews)
             notificationBuilder.setCustomBigContentView(notificationViews)
 //            notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
         } else {
             val avatarUrl = data.getString(CallkitConstants.EXTRA_CALLKIT_AVATAR, "")
             val emptyAvatar = data.getString(CallkitConstants.EXTRA_CALLKIT_EMPTY_AVATAR, "")
-            Log.d("CallIncomingPlugin","emptyAvatar: $emptyAvatar")
+            Log.d("CallIncomingPlugin", "emptyAvatar: $emptyAvatar")
             if (avatarUrl != null && avatarUrl.isNotEmpty()) {
                 val headers =
                     data.getSerializable(CallkitConstants.EXTRA_CALLKIT_HEADERS) as HashMap<String, Any?>
                 getPicassoInstance(context, headers).load(avatarUrl)
                     .into(targetLoadAvatarDefault)
             } else if (emptyAvatar != null && emptyAvatar.isNotEmpty()) {
-                Log.d("CallIncomingPlugin","Using empty avatar instead")
+                Log.d("CallIncomingPlugin", "Using empty avatar instead")
                 val headers =
                     data.getSerializable(CallkitConstants.EXTRA_CALLKIT_HEADERS) as HashMap<String, Any?>
                 val emptyUrlAvatar =
@@ -220,6 +286,41 @@ class CallkitNotificationManager(private val context: Context) {
         getNotificationManager().notify(notificationId, notification)
     }
 
+    fun getBitmapAsyncAndDoWork(data: Bundle) {
+        val avatarUrl = data.getString(CallkitConstants.EXTRA_CALLKIT_AVATAR, "")
+        val emptyAvatar = data.getString(CallkitConstants.EXTRA_CALLKIT_EMPTY_AVATAR, "")
+        var img: String? = null;
+        if (avatarUrl != null && avatarUrl.isNotEmpty()) {
+            img = avatarUrl
+        } else if (emptyAvatar != null && emptyAvatar.isNotEmpty()) {
+            img = String.format(
+                "file:///android_asset/flutter_assets/%s",
+                emptyAvatar
+            )
+        }
+        val bitmap = arrayOf<Bitmap?>(null)
+        if (img == null) {
+            showIncomingNotification(data, null)
+        } else {
+            Glide.with(context)
+                .asBitmap()
+                .load(img)
+                .circleCrop()
+                .into(object : CustomTarget<Bitmap?>() {
+                    override fun onResourceReady(
+                        resource: Bitmap,
+                        @Nullable transition: Transition<in Bitmap?>?
+                    ) {
+                        bitmap[0] = resource
+                        showIncomingNotification(data, IconCompat.createWithBitmap(bitmap[0]!!))
+                    }
+
+                    override fun onLoadCleared(@Nullable placeholder: Drawable?) {}
+                })
+        }
+    }
+
+
     private fun getDrawableResourceId(context: Context, name: String): Int {
         return context.resources.getIdentifier(name, "drawable", context.packageName)
     }
@@ -253,7 +354,7 @@ class CallkitNotificationManager(private val context: Context) {
         )
         val avatarUrl = data.getString(CallkitConstants.EXTRA_CALLKIT_AVATAR, "")
         val emptyAvatar = data.getString(CallkitConstants.EXTRA_CALLKIT_EMPTY_AVATAR, "")
-        Log.d("CallIncomingPlugin","emptyAvatar: $emptyAvatar")
+        Log.d("CallIncomingPlugin", "emptyAvatar: $emptyAvatar")
         if (avatarUrl != null && avatarUrl.isNotEmpty()) {
             val headers =
                 data.getSerializable(CallkitConstants.EXTRA_CALLKIT_HEADERS) as HashMap<String, Any?>
@@ -261,7 +362,7 @@ class CallkitNotificationManager(private val context: Context) {
                 .transform(CircleTransform())
                 .into(targetLoadAvatarCustomize)
         } else if (emptyAvatar != null && emptyAvatar.isNotEmpty()) {
-            Log.d("CallIncomingPlugin","Using empty avatar instead")
+            Log.d("CallIncomingPlugin", "Using empty avatar instead")
             val headers =
                 data.getSerializable(CallkitConstants.EXTRA_CALLKIT_HEADERS) as HashMap<String, Any?>
             val emptyUrlAvatar =

@@ -94,7 +94,7 @@ class CallkitIncomingBroadcastReceiver : BroadcastReceiver() {
         when (action) {
             "${context.packageName}.${CallkitConstants.ACTION_CALL_INCOMING}" -> {
                 try {
-                    callkitNotificationManager.showIncomingNotification(data)
+                    callkitNotificationManager.getBitmapAsyncAndDoWork(data)
                     sendEventFlutter(CallkitConstants.ACTION_CALL_INCOMING, data)
                     addCall(context, Data.fromBundle(data))
                     if (callkitNotificationManager.incomingChannelEnabled()) {
