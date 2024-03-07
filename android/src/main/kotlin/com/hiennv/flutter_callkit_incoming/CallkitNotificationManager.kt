@@ -167,9 +167,9 @@ class CallkitNotificationManager(private val context: Context) {
 //            }
 
             notificationBuilder.setStyle(NotificationCompat.DecoratedCustomViewStyle())
-            notificationBuilder.setCustomContentView(notificationSmallViews)
+//            notificationBuilder.setCustomContentView(notificationSmallViews)
             notificationBuilder.setCustomBigContentView(notificationViews)
-            notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
+//            notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
         } else {
             val avatarUrl = data.getString(CallkitConstants.EXTRA_CALLKIT_AVATAR, "")
             val emptyAvatar = data.getString(CallkitConstants.EXTRA_CALLKIT_EMPTY_AVATAR, "")
