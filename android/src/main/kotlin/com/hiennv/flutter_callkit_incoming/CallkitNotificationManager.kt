@@ -26,6 +26,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.Person
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.IconCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.FutureTarget
@@ -128,19 +129,19 @@ class CallkitNotificationManager(private val context: Context) {
         notificationBuilder.setDeleteIntent(getTimeOutPendingIntent(notificationId, data))
         val typeCall = data.getInt(CallkitConstants.EXTRA_CALLKIT_TYPE, -1)
 
-        var notificationLogo = data.getString(CallkitConstants.EXTRA_CALLKIT_NOTIFICATION_LOGO);
-        var smallIcon: Int
-        if (notificationLogo?.isNotEmpty() == true) {
-            smallIcon = getDrawableResourceId(context, notificationLogo)
+        val notificationLogo = data.getString(CallkitConstants.EXTRA_CALLKIT_NOTIFICATION_LOGO);
+        val smallIcon: Int = if (notificationLogo?.isNotEmpty() == true) {
+            getDrawableResourceId(context, notificationLogo)
         } else {
-            smallIcon = context.applicationInfo.icon
-            if (typeCall > 0) {
-                smallIcon = R.drawable.ic_video
-            } else {
-                if (smallIcon >= 0) {
-                    smallIcon = R.drawable.ic_accept
-                }
-            }
+            R.drawable.default_sapa_notification_icon
+    //            smallIcon = context.applicationInfo.icon
+    //            if (typeCall > 0) {
+    //                smallIcon = R.drawable.ic_video
+    //            } else {
+    //                if (smallIcon >= 0) {
+    //                    smallIcon = R.drawable.ic_accept
+    //                }
+    //            }
         }
 
         notificationBuilder.setSmallIcon(smallIcon)
@@ -197,7 +198,7 @@ class CallkitNotificationManager(private val context: Context) {
 //                    } catch (e: ExecutionException) {
 //                        //set bitmap fallback in case of glide get fail on a 404 response
 //                    }
-                if (ic!=null) {
+                if (ic != null) {
                     caller.setIcon(ic)
                 }
                 caller.setName(
