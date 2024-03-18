@@ -134,14 +134,14 @@ class CallkitNotificationManager(private val context: Context) {
             getDrawableResourceId(context, notificationLogo)
         } else {
             R.drawable.default_sapa_notification_icon
-    //            smallIcon = context.applicationInfo.icon
-    //            if (typeCall > 0) {
-    //                smallIcon = R.drawable.ic_video
-    //            } else {
-    //                if (smallIcon >= 0) {
-    //                    smallIcon = R.drawable.ic_accept
-    //                }
-    //            }
+            //            smallIcon = context.applicationInfo.icon
+            //            if (typeCall > 0) {
+            //                smallIcon = R.drawable.ic_video
+            //            } else {
+            //                if (smallIcon >= 0) {
+            //                    smallIcon = R.drawable.ic_accept
+            //                }
+            //            }
         }
 
         notificationBuilder.setSmallIcon(smallIcon)
@@ -231,12 +231,15 @@ class CallkitNotificationManager(private val context: Context) {
                 notificationViews =
                     RemoteViews(context.packageName, R.layout.layout_custom_notification)
                 initNotificationViews(notificationViews!!, data)
-                notificationBuilder.setStyle(NotificationCompat.BigTextStyle())
+                notificationSmallViews =
+                    RemoteViews(context.packageName, R.layout.layout_custom_small_ex_notification)
+                initNotificationViews(notificationSmallViews!!, data)
+                notificationBuilder.setStyle(NotificationCompat.DecoratedCustomViewStyle())
+                notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
             }
 
+                notificationBuilder.setCustomBigContentView(notificationViews)
 //            notificationBuilder.setCustomContentView(notificationSmallViews)
-            notificationBuilder.setCustomBigContentView(notificationViews)
-//            notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
         } else {
             val avatarUrl = data.getString(CallkitConstants.EXTRA_CALLKIT_AVATAR, "")
             val emptyAvatar = data.getString(CallkitConstants.EXTRA_CALLKIT_EMPTY_AVATAR, "")
