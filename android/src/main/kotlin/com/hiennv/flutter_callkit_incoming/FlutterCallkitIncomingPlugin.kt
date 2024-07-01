@@ -21,7 +21,8 @@ import java.lang.ref.WeakReference
 
 
 /** FlutterCallkitIncomingPlugin */
-class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, PluginRegistry.RequestPermissionsResultListener {
+class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
+    PluginRegistry.RequestPermissionsResultListener {
     companion object {
 
         const val EXTRA_CALLKIT_CALL_DATA = "EXTRA_CALLKIT_CALL_DATA"
@@ -57,7 +58,10 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
         }
 
         fun sharePluginWithRegister(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-            initSharedInstance(flutterPluginBinding.applicationContext, flutterPluginBinding.binaryMessenger)
+            initSharedInstance(
+                flutterPluginBinding.applicationContext,
+                flutterPluginBinding.binaryMessenger
+            )
         }
 
         fun initSharedInstance(context: Context, binaryMessenger: BinaryMessenger) {
@@ -100,16 +104,15 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
     }
 
 
-
     public fun showIncomingNotification(data: Data) {
         data.from = "notification"
         callkitNotificationManager?.getBitmapAsyncAndDoWork(data.toBundle())
         //send BroadcastReceiver
         context?.sendBroadcast(
-                CallkitIncomingBroadcastReceiver.getIntentIncoming(
-                        requireNotNull(context),
-                        data.toBundle()
-                )
+            CallkitIncomingBroadcastReceiver.getIntentIncoming(
+                requireNotNull(context),
+                data.toBundle()
+            )
         )
     }
 
@@ -119,22 +122,23 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
 
     public fun startCall(data: Data) {
         context?.sendBroadcast(
-                CallkitIncomingBroadcastReceiver.getIntentStart(
-                        requireNotNull(context),
-                        data.toBundle()
-                )
+            CallkitIncomingBroadcastReceiver.getIntentStart(
+                requireNotNull(context),
+                data.toBundle()
+            )
         )
     }
+
 
     public fun endCall(data: Data) {
         Handler(Looper.getMainLooper()).post {
 
         }
         context?.sendBroadcast(
-                CallkitIncomingBroadcastReceiver.getIntentEnded(
-                        requireNotNull(context),
-                        data.toBundle()
-                )
+            CallkitIncomingBroadcastReceiver.getIntentEnded(
+                requireNotNull(context),
+                data.toBundle()
+            )
         )
     }
 
@@ -142,10 +146,10 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
         val calls = getDataActiveCalls(context)
         calls.forEach {
             context?.sendBroadcast(
-                    CallkitIncomingBroadcastReceiver.getIntentEnded(
-                            requireNotNull(context),
-                            it.toBundle()
-                    )
+                CallkitIncomingBroadcastReceiver.getIntentEnded(
+                    requireNotNull(context),
+                    it.toBundle()
+                )
             )
         }
         removeAllCalls(context)
@@ -165,10 +169,10 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
                     data.from = "notification"
                     //send BroadcastReceiver
                     context?.sendBroadcast(
-                            CallkitIncomingBroadcastReceiver.getIntentIncoming(
-                                    requireNotNull(context),
-                                    data.toBundle()
-                            )
+                        CallkitIncomingBroadcastReceiver.getIntentIncoming(
+                            requireNotNull(context),
+                            data.toBundle()
+                        )
                     )
 
                     // only report to telecom if it's a voice call
@@ -201,10 +205,10 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
                 "startCall" -> {
                     val data = Data(call.arguments() ?: HashMap())
                     context?.sendBroadcast(
-                            CallkitIncomingBroadcastReceiver.getIntentStart(
-                                    requireNotNull(context),
-                                    data.toBundle()
-                            )
+                        CallkitIncomingBroadcastReceiver.getIntentStart(
+                            requireNotNull(context),
+                            data.toBundle()
+                        )
                     )
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -256,13 +260,22 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
                     result.success(false)
                 }
 
+                "stopRing" -> {
+                    try {
+                        context?.stopService(Intent(context, CallkitSoundPlayerService::class.java))
+                        result.success("OK")
+                    } catch (e: Exception) {
+                        result.success("Something wrong ${e.toString()}")
+                    }
+                }
+
                 "endCall" -> {
                     val data = Data(call.arguments() ?: HashMap())
                     context?.sendBroadcast(
-                            CallkitIncomingBroadcastReceiver.getIntentEnded(
-                                    requireNotNull(context),
-                                    data.toBundle()
-                            )
+                        CallkitIncomingBroadcastReceiver.getIntentEnded(
+                            requireNotNull(context),
+                            data.toBundle()
+                        )
                     )
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -285,17 +298,17 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
                     calls.forEach {
                         if (it.isAccepted) {
                             context?.sendBroadcast(
-                                    CallkitIncomingBroadcastReceiver.getIntentEnded(
-                                            requireNotNull(context),
-                                            it.toBundle()
-                                    )
+                                CallkitIncomingBroadcastReceiver.getIntentEnded(
+                                    requireNotNull(context),
+                                    it.toBundle()
+                                )
                             )
                         } else {
                             context?.sendBroadcast(
-                                    CallkitIncomingBroadcastReceiver.getIntentDecline(
-                                            requireNotNull(context),
-                                            it.toBundle()
-                                    )
+                                CallkitIncomingBroadcastReceiver.getIntentDecline(
+                                    requireNotNull(context),
+                                    it.toBundle()
+                                )
                             )
                         }
                     }
@@ -379,8 +392,11 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
     }
 
     override fun onDetachedFromActivity() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            Log.d("FlutterCallkitPlugin", "onDetachedFromActivity: called -- activity destroyed? ${activity?.isDestroyed}")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Log.d(
+                "FlutterCallkitPlugin",
+                "onDetachedFromActivity: called -- activity destroyed? ${activity?.isDestroyed}"
+            )
             if (activity?.isDestroyed == true) telecomUtilities.endAllActiveCalls()
         }
     }
@@ -395,8 +411,8 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
 
         fun send(event: String, body: Map<String, Any>) {
             val data = mapOf(
-                    "event" to event,
-                    "body" to body
+                "event" to event,
+                "body" to body
             )
             Handler(Looper.getMainLooper()).post {
                 eventSink?.success(data)
@@ -408,8 +424,16 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray): Boolean {
-        instance.callkitNotificationManager?.onRequestPermissionsResult(instance.activity, requestCode, grantResults)
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ): Boolean {
+        instance.callkitNotificationManager?.onRequestPermissionsResult(
+            instance.activity,
+            requestCode,
+            grantResults
+        )
         return true
     }
 

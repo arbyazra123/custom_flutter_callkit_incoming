@@ -159,8 +159,8 @@ class CallkitIncomingBroadcastReceiver : BroadcastReceiver() {
 
             "${context.packageName}.${CallkitConstants.ACTION_CALL_TIMEOUT}" -> {
                 try {
-//                    sendEventFlutter(CallkitConstants.ACTION_CALL_TIMEOUT, data)
-//                    context.stopService(Intent(context, CallkitSoundPlayerService::class.java))
+                    sendEventFlutter(CallkitConstants.ACTION_CALL_TIMEOUT, data)
+                    context.stopService(Intent(context, CallkitSoundPlayerService::class.java))
 //                    if (data.getBoolean(CallkitConstants.EXTRA_CALLKIT_MISSED_CALL_SHOW, true)) {
 //                        callkitNotificationManager.showMissCallNotification(data)
 //                    }

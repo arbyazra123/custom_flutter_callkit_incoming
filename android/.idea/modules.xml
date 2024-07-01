@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/flutter_callkit_incoming.iml" filepath="$PROJECT_DIR$/.idea/flutter_callkit_incoming.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flutter_callkit_incoming.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/flutter_callkit_incoming.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flutter_callkit_incoming.main.iml" filepath="$PROJECT_DIR$/.idea/modules/flutter_callkit_incoming.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flutter_callkit_incoming.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/flutter_callkit_incoming.unitTest.iml" />
+    </modules>
+  </component>
+</project>

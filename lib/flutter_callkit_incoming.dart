@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import 'entities/entities.dart';
@@ -54,6 +55,13 @@ class FlutterCallkitIncoming {
   /// On Android, Nothing(only callback event listener).
   static Future startCall(CallKitParams params) async {
     await _channel.invokeMethod("startCall", params.toJson());
+  }
+
+  /// Stop current ring forcely
+  /// Only in Android
+  static Future stopRing() async {
+    var result = await _channel.invokeMethod("stopRing");
+    debugPrint("FlutterCallkitIncoming.stopRing result: $result");
   }
 
   /// Muting an Ongoing call.
