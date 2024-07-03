@@ -319,6 +319,11 @@ class CallkitNotificationManager(private val context: Context) {
                         showIncomingNotification(data, IconCompat.createWithBitmap(bitmap[0]!!))
                     }
 
+                    override fun onLoadFailed(errorDrawable: Drawable?) {
+                        super.onLoadFailed(errorDrawable)
+                        showIncomingNotification(data, null)
+                    }
+                    
                     override fun onLoadCleared(@Nullable placeholder: Drawable?) {}
                 })
         }
