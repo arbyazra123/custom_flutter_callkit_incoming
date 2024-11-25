@@ -122,11 +122,11 @@ class CallkitNotificationManager(private val context: Context) {
         )
         notificationBuilder.setOnlyAlertOnce(true)
         notificationBuilder.setSound(null)
-        if(data.getBoolean(CallkitConstants.EXTRA_CALLKIT_USE_FULLSCREEN_INTENT_WHEN_LOCKED)){
+//        if(data.getBoolean(CallkitConstants.EXTRA_CALLKIT_USE_FULLSCREEN_INTENT_WHEN_LOCKED)){
             notificationBuilder.setFullScreenIntent(
                 getActivityPendingIntent(notificationId, data), true
             )
-        }
+//        }
         notificationBuilder.setContentIntent(getActivityPendingIntent(notificationId, data))
         notificationBuilder.setDeleteIntent(getTimeOutPendingIntent(notificationId, data))
         val typeCall = data.getInt(CallkitConstants.EXTRA_CALLKIT_TYPE, -1)
