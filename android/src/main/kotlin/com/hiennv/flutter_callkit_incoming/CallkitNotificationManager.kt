@@ -47,7 +47,7 @@ class CallkitNotificationManager(private val context: Context) {
 
         const val EXTRA_TIME_START_CALL = "EXTRA_TIME_START_CALL"
 
-        private const val NOTIFICATION_CHANNEL_ID_INCOMING = "sapa_advanced_call"
+        private const val NOTIFICATION_CHANNEL_ID_INCOMING = "call_channel"
         private const val NOTIFICATION_CHANNEL_ID_MISSED = "callkit_missed_channel_id"
     }
 
@@ -580,7 +580,7 @@ class CallkitNotificationManager(private val context: Context) {
                 }
                 channelCall.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
 
-                channelCall.importance = NotificationManager.IMPORTANCE_HIGH
+                channelCall.importance = NotificationManager.IMPORTANCE_MAX
 
                 createNotificationChannel(channelCall)
 
