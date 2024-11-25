@@ -1,4 +1,4 @@
-group 'com.example.flutter_callkit_incoming'
+group 'com.hiennv.flutter_callkit_incoming'
 version '1.0-SNAPSHOT'
 
 buildscript {
