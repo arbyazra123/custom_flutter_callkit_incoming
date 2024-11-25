@@ -1,4 +1,4 @@
-group 'com.hiennv.flutter_callkit_incoming'
+group 'com.example.flutter_callkit_incoming'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -29,6 +29,10 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdk 34
+
+    if (project.android.hasProperty("namespace")) {
+        namespace "com.hiennv.flutter_callkit_incoming"
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
