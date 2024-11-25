@@ -16,6 +16,7 @@ AndroidParams _$AndroidParamsFromJson(Map<String, dynamic> json) =>
       backgroundUrl: json['backgroundUrl'] as String?,
       actionColor: json['actionColor'] as String?,
       textColor: json['textColor'] as String?,
+      useFullScreenIntentWhenLocked: json['useFullScreenIntentWhenLocked'] as bool?,
       incomingCallNotificationChannelName:
           json['incomingCallNotificationChannelName'] as String?,
       missedCallNotificationChannelName:
@@ -32,6 +33,7 @@ Map<String, dynamic> _$AndroidParamsToJson(AndroidParams instance) =>
       'backgroundUrl': instance.backgroundUrl,
       'actionColor': instance.actionColor,
       'textColor': instance.textColor,
+      'useFullScreenIntentWhenLocked': instance.useFullScreenIntentWhenLocked,
       'incomingCallNotificationChannelName':
           instance.incomingCallNotificationChannelName,
       'missedCallNotificationChannelName':

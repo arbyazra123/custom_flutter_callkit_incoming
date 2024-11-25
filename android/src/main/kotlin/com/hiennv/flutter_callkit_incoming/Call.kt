@@ -75,6 +75,9 @@ data class Data(val args: Map<String, Any?>) {
     @JsonProperty("backgroundUrl")
     var backgroundUrl: String
 
+    @JsonProperty("useFullScreenIntentWhenLocked")
+    var useFullScreenIntentWhenLocked: Boolean = false
+
     @JsonProperty("textColor")
     var textColor: String
 
@@ -128,6 +131,7 @@ data class Data(val args: Map<String, Any?>) {
         backgroundUrl = android["backgroundUrl"] as? String ?: ""
         actionColor = android["actionColor"] as? String ?: "#4CAF50"
         textColor = android["textColor"] as? String ?: "#ffffff"
+        useFullScreenIntentWhenLocked = android["useFullScreenIntentWhenLocked"] as? Boolean ?: false
         incomingCallNotificationChannelName =
             android["incomingCallNotificationChannelName"] as? String
         missedCallNotificationChannelName = android["missedCallNotificationChannelName"] as? String
@@ -175,6 +179,7 @@ data class Data(val args: Map<String, Any?>) {
         bundle.putLong(CallkitConstants.EXTRA_CALLKIT_DURATION, duration)
         bundle.putString(CallkitConstants.EXTRA_CALLKIT_TEXT_ACCEPT, textAccept)
         bundle.putString(CallkitConstants.EXTRA_CALLKIT_TEXT_DECLINE, textDecline)
+        bundle.putBoolean(CallkitConstants.EXTRA_CALLKIT_USE_FULLSCREEN_INTENT_WHEN_LOCKED, useFullScreenIntentWhenLocked)
 
         missedNotificationId?.let {
             bundle.putInt(
@@ -265,6 +270,8 @@ data class Data(val args: Map<String, Any?>) {
                 bundle.getString(CallkitConstants.EXTRA_CALLKIT_TEXT_ACCEPT, "")
             data.textDecline =
                 bundle.getString(CallkitConstants.EXTRA_CALLKIT_TEXT_DECLINE, "")
+            data.useFullScreenIntentWhenLocked =
+                bundle.getBoolean(CallkitConstants.EXTRA_CALLKIT_USE_FULLSCREEN_INTENT_WHEN_LOCKED, false)
 
             data.missedNotificationId =
                 bundle.getInt(CallkitConstants.EXTRA_CALLKIT_MISSED_CALL_ID)

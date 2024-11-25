@@ -16,6 +16,7 @@ class AndroidParams {
     this.textColor,
     this.incomingCallNotificationChannelName,
     this.missedCallNotificationChannelName,
+    this.useFullScreenIntentWhenLocked,
   });
 
   /// Using custom notifications.
@@ -48,7 +49,11 @@ class AndroidParams {
   /// Notification channel name of missed call.
   final String? missedCallNotificationChannelName;
 
-  factory AndroidParams.fromJson(Map<String, dynamic> json) => _$AndroidParamsFromJson(json);
+  /// use FullScreen Intent when device is locked
+  final bool? useFullScreenIntentWhenLocked;
+
+  factory AndroidParams.fromJson(Map<String, dynamic> json) =>
+      _$AndroidParamsFromJson(json);
 
   Map<String, dynamic> toJson() => _$AndroidParamsToJson(this);
 }
