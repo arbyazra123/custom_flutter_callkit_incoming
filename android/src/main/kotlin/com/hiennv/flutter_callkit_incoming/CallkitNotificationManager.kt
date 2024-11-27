@@ -214,11 +214,10 @@ class CallkitNotificationManager(private val context: Context) {
                         )
                     initNotificationViews(notificationSmallViews!!, data)
                     notificationBuilder.setStyle(NotificationCompat.DecoratedCustomViewStyle())
-
-                } finally {
                     notificationBuilder.setCustomContentView(notificationSmallViews)
-                    notificationBuilder.setCustomBigContentView(notificationViews)
                     notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
+                } finally {
+                    notificationBuilder.setCustomBigContentView(notificationViews)
                 }
 
 
