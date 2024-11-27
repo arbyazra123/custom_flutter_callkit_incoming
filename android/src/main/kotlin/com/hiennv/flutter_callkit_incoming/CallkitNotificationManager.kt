@@ -123,9 +123,9 @@ class CallkitNotificationManager(private val context: Context) {
         notificationBuilder.setOnlyAlertOnce(true)
         notificationBuilder.setSound(null)
 //        if(data.getBoolean(CallkitConstants.EXTRA_CALLKIT_USE_FULLSCREEN_INTENT_WHEN_LOCKED)){
-            notificationBuilder.setFullScreenIntent(
-                getActivityPendingIntent(notificationId, data), true
-            )
+        notificationBuilder.setFullScreenIntent(
+            getActivityPendingIntent(notificationId, data), true
+        )
 //        }
         notificationBuilder.setContentIntent(getActivityPendingIntent(notificationId, data))
         notificationBuilder.setDeleteIntent(getTimeOutPendingIntent(notificationId, data))
@@ -159,47 +159,23 @@ class CallkitNotificationManager(private val context: Context) {
         val isCustomSmallExNotification =
             data.getBoolean(CallkitConstants.EXTRA_CALLKIT_IS_CUSTOM_SMALL_EX_NOTIFICATION, false)
         if (isCustomNotification) {
-
-//            if ((Build.MANUFACTURER.equals(
-//                    "Samsung",
-//                    ignoreCase = true
-//                ) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) || isCustomSmallExNotification
-//            ) {
-//                notificationSmallViews =
-//                    RemoteViews(context.packageName, R.layout.layout_custom_small_ex_notification)
-//                initNotificationViews(notificationSmallViews!!, data)
-//            } else {
-//                notificationSmallViews =
-//                    RemoteViews(context.packageName, R.layout.layout_custom_small_notification)
-//                initNotificationViews(notificationSmallViews!!, data)
-//            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            notificationViews =
+                RemoteViews(context.packageName, R.layout.layout_custom_notification)
+            initNotificationViews(notificationViews!!, data)
+            if ((Build.MANUFACTURER.equals(
+                    "Samsung",
+                    ignoreCase = true
+                ) && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) || isCustomSmallExNotification)
+            ) {
+                notificationSmallViews =
+                    RemoteViews(context.packageName, R.layout.layout_custom_small_ex_notification)
+                initNotificationViews(notificationSmallViews!!, data)
+                notificationBuilder.setCustomBigContentView(notificationViews)
+                notificationBuilder.setStyle(NotificationCompat.DecoratedCustomViewStyle())
+                notificationBuilder.setCustomContentView(notificationSmallViews)
+                notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !isCustomSmallExNotification) {
                 val caller = Person.Builder()
-//                val avatarUrl = data.getString(CallkitConstants.EXTRA_CALLKIT_AVATAR, "")
-//                val emptyAvatar = data.getString(CallkitConstants.EXTRA_CALLKIT_EMPTY_AVATAR, "")
-//                var futureBitmap: FutureTarget<Bitmap>? = null
-////                val headers =
-////                    data.getSerializable(CallkitConstants.EXTRA_CALLKIT_HEADERS) as HashMap<String, Any?>
-//                if (avatarUrl != null && avatarUrl.isNotEmpty()) {
-//
-//                    futureBitmap =
-//                        Glide.with(context).asBitmap().circleCrop().load(avatarUrl).submit()
-//                } else if (emptyAvatar != null && emptyAvatar.isNotEmpty()) {
-//                    futureBitmap = Glide.with(context).asBitmap().circleCrop().load(
-//                        String.format(
-//                            "file:///android_asset/flutter_assets/%s",
-//                            emptyAvatar
-//                        )
-//                    ).submit()
-//                }
-//                val bitmap =
-//                    try {
-//                        futureBitmap?.get()
-//                    } catch (e: InterruptedException) {
-//                        //set bitmap fallback in case of glide get fail on a 404 response
-//                    } catch (e: ExecutionException) {
-//                        //set bitmap fallback in case of glide get fail on a 404 response
-//                    }
                 if (ic != null) {
                     caller.setIcon(ic)
                 }
@@ -229,18 +205,19 @@ class CallkitNotificationManager(private val context: Context) {
                     )
                 )
                 notificationBuilder.setStyle(style)
+                notificationBuilder.setCustomContentView(notificationSmallViews)
+                notificationBuilder.setCustomBigContentView(notificationViews)
+                notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
             } else {
-                notificationViews =
-                    RemoteViews(context.packageName, R.layout.layout_custom_notification)
-                initNotificationViews(notificationViews!!, data)
                 notificationSmallViews =
                     RemoteViews(context.packageName, R.layout.layout_custom_small_ex_notification)
                 initNotificationViews(notificationSmallViews!!, data)
                 notificationBuilder.setStyle(NotificationCompat.DecoratedCustomViewStyle())
+                notificationBuilder.setCustomContentView(notificationSmallViews)
+                notificationBuilder.setCustomBigContentView(notificationViews)
                 notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
             }
 
-                notificationBuilder.setCustomBigContentView(notificationViews)
 //            notificationBuilder.setCustomContentView(notificationSmallViews)
         } else {
             val avatarUrl = data.getString(CallkitConstants.EXTRA_CALLKIT_AVATAR, "")
@@ -325,7 +302,7 @@ class CallkitNotificationManager(private val context: Context) {
                         super.onLoadFailed(errorDrawable)
                         showIncomingNotification(data, null)
                     }
-                    
+
                     override fun onLoadCleared(@Nullable placeholder: Drawable?) {}
                 })
         }
