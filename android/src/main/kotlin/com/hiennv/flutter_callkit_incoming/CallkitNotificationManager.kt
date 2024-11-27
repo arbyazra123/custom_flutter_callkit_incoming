@@ -174,48 +174,54 @@ class CallkitNotificationManager(private val context: Context) {
                 notificationBuilder.setStyle(NotificationCompat.DecoratedCustomViewStyle())
                 notificationBuilder.setCustomContentView(notificationSmallViews)
                 notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !isCustomSmallExNotification) {
-                val caller = Person.Builder()
-                if (ic != null) {
-                    caller.setIcon(ic)
-                }
-                caller.setName(
-                    data.getString(
-                        CallkitConstants.EXTRA_CALLKIT_NAME_CALLER,
-                        ""
-                    )
-                )
-                caller.setImportant(true)
-
-                val style = NotificationCompat.CallStyle.forIncomingCall(
-                    caller.build(),
-                    getDeclinePendingIntent(notificationId, data),
-                    getAcceptPendingIntent(notificationId, data)
-                )
-                notificationBuilder.setContentTitle(
-                    data.getString(
-                        CallkitConstants.EXTRA_CALLKIT_NAME_CALLER,
-                        ""
-                    )
-                )
-                notificationBuilder.setContentText(
-                    data.getString(
-                        CallkitConstants.EXTRA_CALLKIT_HANDLE,
-                        ""
-                    )
-                )
-                notificationBuilder.setStyle(style)
-                notificationBuilder.setCustomContentView(notificationSmallViews)
-                notificationBuilder.setCustomBigContentView(notificationViews)
-                notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
             } else {
-                notificationSmallViews =
-                    RemoteViews(context.packageName, R.layout.layout_custom_small_ex_notification)
-                initNotificationViews(notificationSmallViews!!, data)
-                notificationBuilder.setStyle(NotificationCompat.DecoratedCustomViewStyle())
-                notificationBuilder.setCustomContentView(notificationSmallViews)
-                notificationBuilder.setCustomBigContentView(notificationViews)
-                notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
+                try {
+                    val caller = Person.Builder()
+                    if (ic != null) {
+                        caller.setIcon(ic)
+                    }
+                    caller.setName(
+                        data.getString(
+                            CallkitConstants.EXTRA_CALLKIT_NAME_CALLER,
+                            ""
+                        )
+                    )
+                    caller.setImportant(true)
+
+                    val style = NotificationCompat.CallStyle.forIncomingCall(
+                        caller.build(),
+                        getDeclinePendingIntent(notificationId, data),
+                        getAcceptPendingIntent(notificationId, data)
+                    )
+                    notificationBuilder.setContentTitle(
+                        data.getString(
+                            CallkitConstants.EXTRA_CALLKIT_NAME_CALLER,
+                            ""
+                        )
+                    )
+                    notificationBuilder.setContentText(
+                        data.getString(
+                            CallkitConstants.EXTRA_CALLKIT_HANDLE,
+                            ""
+                        )
+                    )
+                    notificationBuilder.setStyle(style)
+                } catch (e: Exception) {
+                    notificationSmallViews =
+                        RemoteViews(
+                            context.packageName,
+                            R.layout.layout_custom_small_ex_notification
+                        )
+                    initNotificationViews(notificationSmallViews!!, data)
+                    notificationBuilder.setStyle(NotificationCompat.DecoratedCustomViewStyle())
+
+                } finally {
+                    notificationBuilder.setCustomContentView(notificationSmallViews)
+                    notificationBuilder.setCustomBigContentView(notificationViews)
+                    notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
+                }
+
+
             }
 
 //            notificationBuilder.setCustomContentView(notificationSmallViews)
