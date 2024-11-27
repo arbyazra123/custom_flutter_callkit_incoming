@@ -54,6 +54,7 @@ class CallkitNotificationManager(private val context: Context) {
     private lateinit var notificationBuilder: NotificationCompat.Builder
     private var notificationViews: RemoteViews? = null
     private var notificationSmallViews: RemoteViews? = null
+    private var notificationHeadsViews: RemoteViews? = null
     private var notificationId: Int = 9696
     private var dataNotificationPermission: Map<String, Any> = HashMap()
 
@@ -87,7 +88,8 @@ class CallkitNotificationManager(private val context: Context) {
     }
 
 
-    fun showIncomingNotification(data: Bundle, ic: IconCompat?) {
+    fun showIncomingNotification(data: Bundle, ic: Bitmap?) {
+//    fun showIncomingNotification(data: Bundle, ic: IconCompat?) {
         data.putLong(EXTRA_TIME_START_CALL, System.currentTimeMillis())
 
         notificationId =
@@ -159,26 +161,30 @@ class CallkitNotificationManager(private val context: Context) {
         val isCustomSmallExNotification =
             data.getBoolean(CallkitConstants.EXTRA_CALLKIT_IS_CUSTOM_SMALL_EX_NOTIFICATION, false)
         if (isCustomNotification) {
+            notificationSmallViews =
+                RemoteViews(context.packageName, R.layout.layout_custom_small_ex_notification)
+            initNotificationViews(notificationSmallViews!!, data, ic, false)
+            notificationHeadsViews =
+                RemoteViews(context.packageName, R.layout.layout_custom_small_notification)
+            initNotificationViews(notificationHeadsViews!!, data, ic, false)
             notificationViews =
                 RemoteViews(context.packageName, R.layout.layout_custom_notification)
-            initNotificationViews(notificationViews!!, data)
+            initNotificationViews(notificationViews!!, data, ic, true)
             if ((Build.MANUFACTURER.equals(
                     "Samsung",
                     ignoreCase = true
-                ) && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) || isCustomSmallExNotification)
+                ) && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S))
             ) {
-                notificationSmallViews =
-                    RemoteViews(context.packageName, R.layout.layout_custom_small_ex_notification)
-                initNotificationViews(notificationSmallViews!!, data)
-                notificationBuilder.setCustomBigContentView(notificationViews)
                 notificationBuilder.setStyle(NotificationCompat.DecoratedCustomViewStyle())
                 notificationBuilder.setCustomContentView(notificationSmallViews)
-                notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
+                notificationBuilder.setCustomHeadsUpContentView(notificationHeadsViews)
+                notificationBuilder.setCustomBigContentView(notificationViews)
+                Log.d("CallIncomingPlugin", "showIncomingNotification.style: SAMSUNG")
             } else {
                 try {
                     val caller = Person.Builder()
                     if (ic != null) {
-                        caller.setIcon(ic)
+                        caller.setIcon(IconCompat.createWithBitmap(ic))
                     }
                     caller.setName(
                         data.getString(
@@ -206,24 +212,16 @@ class CallkitNotificationManager(private val context: Context) {
                         )
                     )
                     notificationBuilder.setStyle(style)
+                    Log.d("CallIncomingPlugin", "showIncomingNotification.style: Call")
                 } catch (e: Exception) {
-                    notificationSmallViews =
-                        RemoteViews(
-                            context.packageName,
-                            R.layout.layout_custom_small_ex_notification
-                        )
-                    initNotificationViews(notificationSmallViews!!, data)
                     notificationBuilder.setStyle(NotificationCompat.DecoratedCustomViewStyle())
                     notificationBuilder.setCustomContentView(notificationSmallViews)
-                    notificationBuilder.setCustomHeadsUpContentView(notificationSmallViews)
-                } finally {
+                    notificationBuilder.setCustomHeadsUpContentView(notificationHeadsViews)
                     notificationBuilder.setCustomBigContentView(notificationViews)
+                    Log.d("CallIncomingPlugin", "showIncomingNotification.style: Default")
                 }
-
-
             }
 
-//            notificationBuilder.setCustomContentView(notificationSmallViews)
         } else {
             val avatarUrl = data.getString(CallkitConstants.EXTRA_CALLKIT_AVATAR, "")
             val emptyAvatar = data.getString(CallkitConstants.EXTRA_CALLKIT_EMPTY_AVATAR, "")
@@ -300,7 +298,8 @@ class CallkitNotificationManager(private val context: Context) {
                         @Nullable transition: Transition<in Bitmap?>?
                     ) {
                         bitmap[0] = resource
-                        showIncomingNotification(data, IconCompat.createWithBitmap(bitmap[0]!!))
+                        showIncomingNotification(data, bitmap[0])
+//                        showIncomingNotification(data, IconCompat.createWithBitmap(bitmap[0]!!))
                     }
 
                     override fun onLoadFailed(errorDrawable: Drawable?) {
@@ -318,7 +317,12 @@ class CallkitNotificationManager(private val context: Context) {
         return context.resources.getIdentifier(name, "drawable", context.packageName)
     }
 
-    private fun initNotificationViews(remoteViews: RemoteViews, data: Bundle) {
+    private fun initNotificationViews(
+        remoteViews: RemoteViews,
+        data: Bundle,
+        ic: Bitmap?,
+        withAvatar: Boolean
+    ) {
         remoteViews.setTextViewText(
             R.id.tvNameCaller,
             data.getString(CallkitConstants.EXTRA_CALLKIT_NAME_CALLER, "")
@@ -345,24 +349,31 @@ class CallkitNotificationManager(private val context: Context) {
             R.id.tvAccept,
             if (TextUtils.isEmpty(textAccept)) context.getString(R.string.text_accept) else textAccept
         )
-        val avatarUrl = data.getString(CallkitConstants.EXTRA_CALLKIT_AVATAR, "")
-        val emptyAvatar = data.getString(CallkitConstants.EXTRA_CALLKIT_EMPTY_AVATAR, "")
-        Log.d("CallIncomingPlugin", "emptyAvatar: $emptyAvatar")
-        if (avatarUrl != null && avatarUrl.isNotEmpty()) {
-            val headers =
-                data.getSerializable(CallkitConstants.EXTRA_CALLKIT_HEADERS) as HashMap<String, Any?>
-            getPicassoInstance(context, headers).load(avatarUrl)
-                .transform(CircleTransform())
-                .into(targetLoadAvatarCustomize)
-        } else if (emptyAvatar != null && emptyAvatar.isNotEmpty()) {
-            Log.d("CallIncomingPlugin", "Using empty avatar instead")
-            val headers =
-                data.getSerializable(CallkitConstants.EXTRA_CALLKIT_HEADERS) as HashMap<String, Any?>
-            val emptyUrlAvatar =
-                String.format("file:///android_asset/flutter_assets/%s", emptyAvatar)
-            getPicassoInstance(context, headers).load(emptyUrlAvatar)
-                .transform(CircleTransform())
-                .into(targetLoadAvatarDefault)
+        if (withAvatar) {
+            val avatarUrl = data.getString(CallkitConstants.EXTRA_CALLKIT_AVATAR, "")
+            val emptyAvatar = data.getString(CallkitConstants.EXTRA_CALLKIT_EMPTY_AVATAR, "")
+            Log.d("CallIncomingPlugin", "emptyAvatar: $emptyAvatar")
+            if (ic != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                notificationViews?.setImageViewBitmap(R.id.ivAvatar, ic)
+                notificationSmallViews?.setImageViewBitmap(R.id.ivAvatar, ic)
+                notificationViews?.setViewVisibility(R.id.ivAvatar, View.VISIBLE)
+                notificationSmallViews?.setViewVisibility(R.id.ivAvatar, View.VISIBLE)
+            } else if (avatarUrl != null && avatarUrl.isNotEmpty()) {
+                val headers =
+                    data.getSerializable(CallkitConstants.EXTRA_CALLKIT_HEADERS) as HashMap<String, Any?>
+                getPicassoInstance(context, headers).load(avatarUrl)
+                    .transform(CircleTransform())
+                    .into(targetLoadAvatarCustomize)
+            } else if (emptyAvatar != null && emptyAvatar.isNotEmpty()) {
+                Log.d("CallIncomingPlugin", "Using empty avatar instead")
+                val headers =
+                    data.getSerializable(CallkitConstants.EXTRA_CALLKIT_HEADERS) as HashMap<String, Any?>
+                val emptyUrlAvatar =
+                    String.format("file:///android_asset/flutter_assets/%s", emptyAvatar)
+                getPicassoInstance(context, headers).load(emptyUrlAvatar)
+                    .transform(CircleTransform())
+                    .into(targetLoadAvatarDefault)
+            }
         }
     }
 

@@ -3,34 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="10dp"
-    android:paddingTop="10dp"
+    android:layout_height="48dp"
     android:paddingRight="10dp"
-    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:layout_centerInParent="true"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_gravity="center_vertical"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/ivAvatar"
-            android:layout_width="@dimen/base_margin_x4"
-            android:layout_height="@dimen/base_margin_x4"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_default_avatar"
-            android:visibility="invisible" />
-
-        <LinearLayout
-            android:layout_width="@dimen/base_margin_half"
-            android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:orientation="vertical">
 
             <TextView
@@ -67,8 +54,8 @@
 
             <LinearLayout
                 android:id="@+id/llDecline"
-                android:layout_width="@dimen/base_margin_x4"
-                android:layout_height="@dimen/base_margin_x4"
+                android:layout_width="@dimen/base_margin_x3"
+                android:layout_height="@dimen/base_margin_x3"
                 android:background="@drawable/rounded_button_decline"
                 android:clickable="true"
                 android:focusable="true"
@@ -101,13 +88,13 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="@dimen/base_margin_x2"
+                android:layout_width="@dimen/base_margin"
                 android:layout_height="match_parent" />
 
             <LinearLayout
                 android:id="@+id/llAccept"
-                android:layout_width="@dimen/base_margin_x4"
-                android:layout_height="@dimen/base_margin_x4"
+                android:layout_width="@dimen/base_margin_x3"
+                android:layout_height="@dimen/base_margin_x3"
                 android:background="@drawable/rounded_button_accept"
                 android:clickable="true"
                 android:focusable="true"
