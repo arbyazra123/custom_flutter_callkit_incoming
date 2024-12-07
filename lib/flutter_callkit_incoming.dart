@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_callkit_incoming/entities/call_audio_state.dart';
 
 import 'entities/entities.dart';
 
@@ -133,6 +134,21 @@ class FlutterCallkitIncoming {
   /// Only Android: show request permission post notification for Android 13+
   static Future requestNotificationPermission(dynamic data) async {
     return await _channel.invokeMethod("requestNotificationPermission", data);
+  }
+
+  static Future setAudioOutput({
+    required CallAudioState audio,
+    required String id,
+  }) async {
+    await _channel.invokeMethod("setAudioRoute", {
+      "id": id,
+      "audioRoute": audio.index + 1,
+    });
+  }
+
+  static Future startRing() async {
+    var result = await _channel.invokeMethod("startRing");
+    debugPrint("FlutterCallkitIncoming.stopRing result: $result");
   }
 
   static CallEvent? _receiveCallEvent(dynamic data) {

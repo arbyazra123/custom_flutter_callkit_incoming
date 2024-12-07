@@ -285,7 +285,7 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
                     result.success("OK")
                 }
 
-                "callConnected" -> {
+                "setCallConnected" -> {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         telecomUtilities.acceptCall(Data(call.arguments() ?: HashMap()))
                     }
@@ -360,9 +360,22 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
                 }
 
                 "setAudioRoute" -> {
-                    val data = Data(call.arguments() ?: HashMap())
+//                    val data = Data(call.arguments() ?: HashMap())
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        telecomUtilities.setAudioRoute(data)
+                        telecomUtilities.setAudioRoute(Data(call.arguments() ?: HashMap()))
+                    }
+                }
+
+                "startRing" -> {
+                    try {
+                        val soundPlayerServiceIntent =
+                            Intent(context, CallkitSoundPlayerService::class.java)
+                        context?.startService(soundPlayerServiceIntent)
+                        print("Success in starting call ringtone service")
+                        result.success("1")
+                    } catch (e: Exception) {
+                        print("Failed to start call ringtone service: ${e.toString()}")
+                        result.success("0")
                     }
                 }
             }

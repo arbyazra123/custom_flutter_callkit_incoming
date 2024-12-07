@@ -170,6 +170,7 @@ class CallkitIncomingActivity : Activity() {
         if(isShowFullLockedScreen == true) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
                 setShowWhenLocked(true)
+                setTurnScreenOn(true);
             } else {
                 window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED)
             }

@@ -182,6 +182,9 @@ class TelecomUtilities(private val applicationContext : Context) {
 		val uuid : String = data.uuid
 
 		val connection = TelecomConnectionService.getConnection(uuid)
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+			setAudioRoute(data)
+		}
 		logToFile("[TelecomUtilities] acceptCall -- UUID = $uuid connection exists? ${connection!=null}")
 
 		// avoid infinite loop by not calling onAnswer if the state isn't already ACTIVE
