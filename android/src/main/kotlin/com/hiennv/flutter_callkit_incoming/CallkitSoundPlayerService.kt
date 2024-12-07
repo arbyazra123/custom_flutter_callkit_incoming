@@ -10,6 +10,7 @@ import android.media.RingtoneManager
 import android.net.Uri
 import android.os.*
 import android.text.TextUtils
+import android.util.Log
 
 class CallkitSoundPlayerService : Service() {
 
@@ -86,6 +87,7 @@ class CallkitSoundPlayerService : Service() {
                 RingtoneManager.TYPE_RINGTONE
             )
         }
+        Log.e("CallkitSoundPlayer","Playing sound: ${uri.toString()}")
         try {
             mediaPlayer(uri!!)
         } catch (e: Exception) {

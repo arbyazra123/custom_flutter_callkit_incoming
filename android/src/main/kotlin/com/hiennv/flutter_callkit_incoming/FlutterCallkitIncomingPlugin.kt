@@ -368,8 +368,10 @@ class FlutterCallkitIncomingPlugin : FlutterPlugin, MethodCallHandler, ActivityA
 
                 "startRing" -> {
                     try {
+                        val data = Data(call.arguments() ?: HashMap())
                         val soundPlayerServiceIntent =
                             Intent(context, CallkitSoundPlayerService::class.java)
+                        soundPlayerServiceIntent.putExtras(data.toBundle())
                         context?.startService(soundPlayerServiceIntent)
                         print("Success in starting call ringtone service")
                         result.success("1")

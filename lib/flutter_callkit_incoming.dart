@@ -146,9 +146,17 @@ class FlutterCallkitIncoming {
     });
   }
 
-  static Future startRing() async {
-    var result = await _channel.invokeMethod("startRing");
-    debugPrint("FlutterCallkitIncoming.stopRing result: $result");
+  /// android/app/src/main/res/raw/[your_asset_path.mp3]
+  static Future startRing([String? path]) async {
+    var result = await _channel.invokeMethod(
+      "startRing",
+      {
+        "android": {
+          "ringtonePath": path,
+        }
+      },
+    );
+    debugPrint("FlutterCallkitIncoming.startRing result: $result");
   }
 
   static CallEvent? _receiveCallEvent(dynamic data) {
