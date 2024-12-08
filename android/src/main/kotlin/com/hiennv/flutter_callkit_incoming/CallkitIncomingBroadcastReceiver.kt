@@ -126,7 +126,7 @@ class CallkitIncomingBroadcastReceiver : BroadcastReceiver() {
 
                     addCall(context, Data.fromBundle(data), true)
                     val newIntent =
-                        context.packageManager.getLaunchIntentForPackage(context.packageName)
+                        context.packageManager.getLaunchIntentForPackage (context.packageName)
                     newIntent?.flags = FLAG_ACTIVITY_NEW_TASK
                     context.startActivity(newIntent)
 

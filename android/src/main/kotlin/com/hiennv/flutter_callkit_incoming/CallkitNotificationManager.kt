@@ -595,17 +595,17 @@ class CallkitNotificationManager(private val context: Context) {
     }
 
     private fun getAcceptPendingIntent(id: Int, data: Bundle): PendingIntent {
-//        val intentTransparent = TransparentActivity.getIntent(
-//            context,
-//            CallkitConstants.ACTION_CALL_ACCEPT,
-//            data
-//        )
+        val intentTransparent = TransparentActivity.getIntent(
+            context,
+            CallkitConstants.ACTION_CALL_ACCEPT,
+            data
+        )
 //        val intent = getLaunchIntent(context)?.apply {
-//            action = CallkitConstants.ACTION_CALL_ACCEPT
-//            putExtra("data", data)
+//            action = "${context.packageName}.${CallkitConstants.ACTION_CALL_ACCEPT}"
+//            putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
 //        }
-        val acceptIntent = CallkitIncomingBroadcastReceiver.getIntentAccept(context, data)
-        return PendingIntent.getBroadcast(context, id, acceptIntent, getFlagPendingIntent())
+//        val acceptIntent = CallkitIncomingBroadcastReceiver.getIntentAccept(context, data)
+        return PendingIntent.getActivity(context, id, intentTransparent, getFlagPendingIntent())
     }
 
     private fun getDeclinePendingIntent(id: Int, data: Bundle): PendingIntent {
