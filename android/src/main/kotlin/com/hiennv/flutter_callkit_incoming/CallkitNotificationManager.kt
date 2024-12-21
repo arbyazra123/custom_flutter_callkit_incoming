@@ -173,13 +173,14 @@ class CallkitNotificationManager(private val context: Context) {
             if ((Build.MANUFACTURER.equals(
                     "Samsung",
                     ignoreCase = true
-                ) && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S))
+                ))
             ) {
                 notificationBuilder.setStyle(NotificationCompat.DecoratedCustomViewStyle())
                 notificationBuilder.setCustomContentView(notificationSmallViews)
                 notificationBuilder.setCustomHeadsUpContentView(notificationHeadsViews)
                 notificationBuilder.setCustomBigContentView(notificationViews)
                 Log.d("CallIncomingPlugin", "showIncomingNotification.style: SAMSUNG")
+
             } else {
                 try {
                     val caller = Person.Builder()
