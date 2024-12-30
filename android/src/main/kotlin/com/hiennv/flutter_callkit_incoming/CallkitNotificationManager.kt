@@ -567,7 +567,7 @@ class CallkitNotificationManager(private val context: Context) {
                         vibrationPattern =
                             longArrayOf(0, 1000, 500, 1000, 500)
                         lightColor = Color.RED
-                        enableLights(true)
+                     stopService   enableLights(true)
                         enableVibration(true)
                         setSound(null, null)
                     }

@@ -130,6 +130,13 @@ class FlutterCallkitIncoming {
     return await _channel.invokeMethod("silenceEvents", false);
   }
 
+  /// hideCallkitIncoming CallKit events
+  static Future hideCallkitIncoming({required String callId}) async {
+    return await _channel.invokeMethod("hideCallkitIncoming", {
+      "id": callId,
+    });
+  }
+
   /// Request permisstion show notification for Android(13)
   /// Only Android: show request permission post notification for Android 13+
   static Future requestNotificationPermission(dynamic data) async {
