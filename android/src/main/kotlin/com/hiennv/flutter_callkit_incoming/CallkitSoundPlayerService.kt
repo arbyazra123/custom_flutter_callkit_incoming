@@ -35,8 +35,7 @@ class CallkitSoundPlayerService : Service() {
         super.onDestroy()
         mediaPlayer?.stop()
         mediaPlayer?.release()
-        vibrator?.cancel()
-
+        forceStopVibration()
         mediaPlayer = null
         vibrator = null
     }
@@ -44,7 +43,7 @@ class CallkitSoundPlayerService : Service() {
     private fun prepare() {
         mediaPlayer?.stop()
         mediaPlayer?.release()
-        vibrator?.cancel()
+        forceStopVibration()
     }
 
     private fun playVibrator() {
@@ -59,6 +58,7 @@ class CallkitSoundPlayerService : Service() {
         when (audioManager?.ringerMode) {
             AudioManager.RINGER_MODE_SILENT -> {
             }
+
             else -> {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     vibrator?.vibrate(
@@ -87,7 +87,7 @@ class CallkitSoundPlayerService : Service() {
                 RingtoneManager.TYPE_RINGTONE
             )
         }
-        Log.e("CallkitSoundPlayer","Playing sound: ${uri.toString()}")
+        Log.e("CallkitSoundPlayer", "Playing sound: ${uri.toString()}")
         try {
             mediaPlayer(uri!!)
         } catch (e: Exception) {
@@ -168,6 +168,26 @@ class CallkitSoundPlayerService : Service() {
             }
         } catch (e: Exception) {
             null
+        }
+    }
+
+    private fun forceStopVibration() {
+        try {
+            if (vibrator?.hasVibrator() == true) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    // Newer APIs (API 26+): Use VibrationEffect to stop vibration
+                    vibrator?.cancel() // Explicitly stop ongoing vibration
+                    Log.d("Vibration", "Vibration canceled using newer API")
+                } else {
+                    // Older APIs (<API 26): Use a zero-duration vibration pattern
+                    vibrator?.vibrate(longArrayOf(0), -1)
+                    Log.d("Vibration", "Vibration force-stopped using legacy workaround")
+                }
+            } else {
+                Log.e("Vibration", "No vibrator available on this device")
+            }
+        } catch (e: Exception) {
+            Log.e("Vibration", "Error while force-stopping vibration", e)
         }
     }
 }
